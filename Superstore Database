@@ -46,7 +46,7 @@ SELECT avg(price)
 FROM superstore
 WHERE category="Kitchen Supplies";
 
-#Show the number of items in one of the categories.
+#Show the number of items sold in the category Appliances.
 SELECT COUNT(item_name)
 FROM superstore
-WHERE category="Kitchen Supplies";
+WHERE category="Appliances";
