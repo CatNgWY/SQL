@@ -1,0 +1,72 @@
+# This project uses the following dataset:
+
+CREATE TABLE actors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    age INTEGER);
+    
+INSERT INTO actors (fullname, age) VALUES ("Xiao Zhan", "32");
+INSERT INTO actors (fullname, age) VALUES ("Liu Yuning", "34");
+INSERT INTO actors (fullname, age) VALUES ("Dilraba Dilmurat", "31");
+INSERT INTO actors (fullname, age) VALUES ("Tian Xiwei", "24");
+INSERT INTO actors (fullname, age) VALUES ("Zhao Lusi", "25");
+INSERT INTO actors (fullname, age) VALUES ("Yang Yang", "32");
+
+CREATE table dramalist (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person_id INTEGER,
+    name TEXT);
+    
+INSERT INTO dramalist (person_id, name) VALUES (1, "The Untamed");
+INSERT INTO dramalist (person_id, name) VALUES (1, "Douluo Continent");
+INSERT INTO dramalist (person_id, name) VALUES (2, "Journey to Love");
+INSERT INTO dramalist (person_id, name) VALUES (2, "The Long Ballad");
+INSERT INTO dramalist (person_id, name) VALUES (3, "You Are My Glory");
+INSERT INTO dramalist (person_id, name) VALUES (3, "The Long Ballad");
+INSERT INTO dramalist (person_id, name) VALUES (3, "Legend of Anle");
+INSERT INTO dramalist (person_id, name) VALUES (4, "Romance on the Farm");
+INSERT INTO dramalist (person_id, name) VALUES (4, "Wrong Carriage Right Groom");
+INSERT INTO dramalist (person_id, name) VALUES (4, "New Life Begins");
+INSERT INTO dramalist (person_id, name) VALUES (5, "The Long Ballad");
+INSERT INTO dramalist (person_id, name) VALUES (5, "Who Rules the World");
+INSERT INTO dramalist (person_id, name) VALUES (6, "You Are My Glory");
+INSERT INTO dramalist (person_id, name) VALUES (6, "Who Rules the World");
+
+CREATE table duets (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person1_id INTEGER,
+    person2_id INTEGER,
+    song TEXT);
+
+INSERT INTO duets (person1_id, person2_id, song)
+    VALUES (2, 5, "Falling Into the Sea of Love");
+INSERT INTO duets (person1_id, person2_id, song)
+    VALUES (3, 6, "Fireworks of Stars");
+INSERT INTO duets (person1_id, person2_id, song)
+    VALUES (1, 4, "Fate Has God's Will");
+
+
+# Display actor names and the names of the dramas they starred in so that we can easily see which actors worked on the same drama.
+SELECT actors.fullname, dramalist.name as drama_name
+FROM actors
+JOIN dramalist
+ON actors.id = dramalist.person_id
+ORDER BY drama_name
+;
+
+# Show all actors for the drama "The Long Ballad."
+SELECT actors.fullname, dramalist.name as drama_name
+FROM actors
+JOIN dramalist
+ON actors.id = dramalist.person_id
+WHERE drama_name="The Long Ballad"
+;
+
+# Display the pairs of actors who performed duets together.
+SELECT a.fullname as duet_singer_1, b.fullname as duet_singer_2, duets.song
+FROM duets
+JOIN actors a
+ON a.id = duets.person1_id
+JOIN actors b
+ON b.id = duets.person2_id
+;
