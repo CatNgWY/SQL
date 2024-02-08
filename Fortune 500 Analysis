@@ -93,10 +93,10 @@ WHERE industry='Healthcare'
 # Rate the mother friendliness of the companies based on amount of maternity leave offered.
 SELECT company_name, industry, maternity_leave_weeks,
 CASE
-  WHEN maternity_leave_weeks >= 15 THEN "Extremely Mother Friendly"
- 	WHEN maternity_leave_weeks >= 12 THEN "Very Mother Friendly"
-	WHEN maternity_leave_weeks >= 8 THEN "Sufficiently Mother Friendly"
-	ELSE "Minimally Mother Friendly" 
+   WHEN maternity_leave_weeks >= 15 THEN "Extremely Mother Friendly"
+   WHEN maternity_leave_weeks >= 12 THEN "Very Mother Friendly"
+   WHEN maternity_leave_weeks >= 8 THEN "Sufficiently Mother Friendly"
+   ELSE "Minimally Mother Friendly" 
 END AS "maternity_leave_levels"
 FROM fortune_companies
 ORDER BY maternity_leave_weeks desc
@@ -126,10 +126,10 @@ ORDER BY company_name
 # Rate the family friendliness of the companies based on amount of paid time off and maternity leave offered.
 SELECT company_name, industry, maternity_leave_weeks, avg_employee_tenure,
 CASE
-  WHEN maternity_leave_weeks >= 15 AND paid_time_off_days >= 20 THEN "3 - Extremely Family Friendly"
- 	WHEN maternity_leave_weeks >= 12 AND paid_time_off_days >= 15 THEN "2 - Very Family Friendly"
-	WHEN maternity_leave_weeks >= 8 AND paid_time_off_days >= 12 THEN "1 - Sufficiently Family Friendly"
-	ELSE "0 - Minimally Family Friendly" 
+   WHEN maternity_leave_weeks >= 15 AND paid_time_off_days >= 20 THEN "3 - Extremely Family Friendly"
+   WHEN maternity_leave_weeks >= 12 AND paid_time_off_days >= 15 THEN "2 - Very Family Friendly"
+   WHEN maternity_leave_weeks >= 8 AND paid_time_off_days >= 12 THEN "1 - Sufficiently Family Friendly"
+   ELSE "0 - Minimally Family Friendly" 
 END AS "family_friendliness"
 FROM fortune_companies
 ORDER BY avg_employee_tenure desc
