@@ -70,3 +70,12 @@ ON a.id = duets.person1_id
 JOIN actors b
 ON b.id = duets.person2_id
 ;
+
+# List actors over age 30 and their dramas.
+SELECT actors.fullname, actors.age as age, dramalist.name as drama_name
+FROM actors
+JOIN dramalist
+ON actors.id = dramalist.person_id
+WHERE age > 30
+ORDER BY drama_name
+;
