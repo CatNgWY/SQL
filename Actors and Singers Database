@@ -62,7 +62,7 @@ ON actors.id = dramalist.person_id
 WHERE drama_name="The Long Ballad"
 ;
 
-# Display the pairs of actors who performed duets together.
+# List the pairs of actors who performed duets together, including the song titles.
 SELECT a.fullname as duet_singer_1, b.fullname as duet_singer_2, duets.song
 FROM duets
 JOIN actors a
