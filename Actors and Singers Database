@@ -1,4 +1,4 @@
-# This project uses the following dataset:
+# This project uses the following data:
 
 CREATE TABLE actors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
